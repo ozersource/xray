@@ -8,7 +8,7 @@ export GOPROXY=https://goproxy.io
 
 PKG_URL := https://codeload.github.com/XTLS/xray-core/tar.gz/v$(PKG_VERSION)
 
-all:download_PKG build_extract
+all:download_PKG build_extract build
 
 build_extract:
 	mkdir -p $(THISDIR)/github.com/xtls
@@ -19,7 +19,9 @@ build_extract:
 	fi )
 
 build:
-	( cd $(THISDIR)/github.com/xtls/xray-core/main; \
+	( cd $(THISDIR)/github.com/xtls/xray-core/; \
+	ls -l; \
+	cd main/; \
 	GOOS=linux GOARCH=mipsle go build -ldflags "-w -s" -o $(THISDIR)/bin/v2ray; \
 	upx --lzma --best $(THISDIR)/bin/v2ray; \
 	)
