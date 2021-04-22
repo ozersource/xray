@@ -14,9 +14,9 @@ build_extract:
 	mkdir -p $(THISDIR)/github.com/xtls
 	mkdir -p $(THISDIR)/bin
 	( if [ ! -d $(THISDIR)/github.com/xtls ]; then \
-	mv $(THISDIR)/$(PKG_SOURCE) $(THISDIR)/xray-core.tar.gz ; \
+	mkdir -p $(THISDIR)/github.com/xtls/xray-core ; \
 	tar zxfv $(THISDIR)/$(PKG_SOURCE) -C $(THISDIR)/github.com/xtls ; \
-	
+	mv $(THISDIR)/github.com/xtls/$(PKG_NAME)-$(PKG_VERSION)/$(PKG_NAME)-$(PKG_VERSION) $(THISDIR)/github.com/xtls/xray-core ; \
 	fi )
 
 build:
