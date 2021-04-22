@@ -44,4 +44,4 @@ jobs:
         
     - name: Build binary
       run: |
-         sudo ./make
+       make
