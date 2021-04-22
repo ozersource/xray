@@ -42,4 +42,4 @@ jobs:
         
     - name: Build binary
       run: |
-         sudo ./build_firmware_modify
+         sudo ./make
