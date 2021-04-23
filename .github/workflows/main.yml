@@ -27,13 +27,19 @@ jobs:
 
         
 
-    - name: Set up Go 1.x
+    - name: Set up Go 1.16.3
       uses: actions/setup-go@v2
       with:
-        go-version: ^1.16
+        go-version: ^1.16.3
       id: go
         
         
     - name: Build binary
       run: |
        make
+    - name : Upload packages
+      uses: actions/upload-artifact@master
+      if: always()
+      with:
+        name: xray-packages
+        path: /home/runner/work/v2ray/v2ray/bin/v2ray
