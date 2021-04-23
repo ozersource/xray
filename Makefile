@@ -14,7 +14,7 @@ build_extract:
 	mkdir -p $(THISDIR)/github.com/xtls
 	mkdir -p $(THISDIR)/bin
 	( if [ ! -d $(THISDIR)/github.com/xtls/xray-core ]; then \
-	/home/runner/work/v2ray/Xray-core-1.4.2.tar.gz -C $(THISDIR)/github.com/xtls ; \
+	tar zxfv /home/runner/work/v2ray/Xray-core-1.4.2.tar.gz -C $(THISDIR)/github.com/xtls ; \
 	mv $(THISDIR)/github.com/xtls/$(PKG_NAME)-$(PKG_VERSION) $(THISDIR)/github.com/xtls/xray-core ; \
 	fi )
 
