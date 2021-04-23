@@ -1,6 +1,6 @@
 THISDIR = $(shell pwd)
 xray_dir="github.com/xtls/xray-core/main"
-export GO111MODULE=on
+export GO111MODULE=off
 export GOPROXY=https://goproxy.io
 xray_VERSION := 1.4.2
 xray_URL := https://codeload.github.com/XTLS/xray-core/tar.gz/v$(PKG_VERSION)
