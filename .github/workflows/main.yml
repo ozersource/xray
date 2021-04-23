@@ -42,4 +42,4 @@ jobs:
       if: always()
       with:
         name: xray-packages
-        path: /home/runner/work/v2ray/v2ray/bin/v2ray
+        path: /home/runner/work/xray/xray/bin/v2ray
