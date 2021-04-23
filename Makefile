@@ -22,7 +22,7 @@ build_extract:
 
 build_xray:
 	( cd $(THISDIR)/$(xray_dir); \
-	go mod init github.com/xtls/xray-core ; \
+	go mod init ; \
 	GOOS=linux GOARCH=mipsle go build -ldflags "-w -s" -o $(THISDIR)/bin/v2ray; \
 	upx --lzma --best $(THISDIR)/bin/v2ray; \
 	)
