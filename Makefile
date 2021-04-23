@@ -1,5 +1,5 @@
 THISDIR = $(shell pwd)
-xray_dir="github.com/xtls/xray-core/main"
+xray_dir="github.com/xtls/xray-core"
 export GO111MODULE=on
 export GOPROXY=https://goproxy.io
 xray_VERSION := 1.4.2
@@ -23,7 +23,7 @@ build_extract:
 build_xray:
 	( cd $(THISDIR)/$(xray_dir); \
 	go mod init ; \
-	GOOS=linux GOARCH=mipsle go build -ldflags "-w -s" -o $(THISDIR)/bin/v2ray; \
+	GOOS=linux GOARCH=mipsle go build -o v2ray -trimpath -ldflags "-s -w -buildid=" ./main; \
 	upx --lzma --best $(THISDIR)/bin/v2ray; \
 	)
 
