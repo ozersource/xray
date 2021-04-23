@@ -13,18 +13,9 @@ all:download_PKG build_extract build
 build_extract:
 	mkdir -p $(THISDIR)/github.com/xtls
 	mkdir -p $(THISDIR)/bin
-	( if [ ! -f /$(THISDIR)/$(PKG_SOURCE) ]; then \
-	tar zxfv /$(THISDIR)/$(PKG_SOURCE) -C $(THISDIR)/github.com/xtls ; \
-	fi )
-	
-	( if [ ! -d $(THISDIR)/github.com/xtls/$(PKG_NAME)-$(PKG_VERSION) ]; then \
+	( if [  -d $(THISDIR)/github.com/xtls/xray-core ]; then \
+	tar zxfv $(THISDIR)/$(PKG_SOURCE) -C $(THISDIR)/github.com/xtls ; \
 	mv $(THISDIR)/github.com/xtls/$(PKG_NAME)-$(PKG_VERSION) $(THISDIR)/github.com/xtls/xray-core ; \
-	fi )	
-	
-	( if [  -d $(THISDIR)/github.com/xtls/xray-core/$(PKG_NAME)-$(PKG_VERSION) ]; then \
-	mv $(THISDIR)/github.com/xtls/xray-core/$(PKG_NAME)-$(PKG_VERSION) $(THISDIR)/github.com/xtls/xray-core1 ; \
-	rm -rf $(THISDIR)/github.com/xtls/xray-core ; \
-	mv $(THISDIR)/github.com/xtls/xray-core1 $(THISDIR)/github.com/xtls/xray-core ; \
 	fi )
 
 build:
