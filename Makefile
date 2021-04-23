@@ -5,7 +5,7 @@ export GOPROXY=https://goproxy.io
 xray_VERSION := 1.4.2
 xray_URL := https://codeload.github.com/XTLS/xray-core/tar.gz/v$(PKG_VERSION)
 
-all:download_xray build_extract build_xray
+all:download_xray clean build_extract build_xray
 
 download_xray:
 	( if [ ! -f $(THISDIR)/Xray-core-$(xray_VERSION).tar.gz ]; then \
@@ -23,7 +23,7 @@ build_extract:
 build_xray:
 	( cd $(THISDIR)/$(xray_dir); \
 	go mod init ; \
-	GOOS=linux GOARCH=mipsle go build -o v2ray -trimpath -ldflags "-s -w -buildid=" ./main; \
+	GOOS=linux GOARCH=mipsle go build -o $(THISDIR)/bin/v2ray -trimpath -ldflags "-s -w -buildid=" ./main; \
 	upx --lzma --best $(THISDIR)/bin/v2ray; \
 	)
 
