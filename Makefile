@@ -1,27 +1,27 @@
 THISDIR = $(shell pwd)
-v2ray_dir="github.com/xtls/xray-core/main"
+xray_dir="github.com/xtls/xray-core/main"
 export GO111MODULE=on
 export GOPROXY=https://goproxy.io
-V2ray_VERSION := 1.4.2
-V2ray_URL := https://codeload.github.com/XTLS/xray-core/tar.gz/v$(PKG_VERSION)
+xray_VERSION := 1.4.2
+xray_URL := https://codeload.github.com/XTLS/xray-core/tar.gz/v$(PKG_VERSION)
 
-all:download_v2 build_extract build_v2ray
+all:download_xray build_extract build_xray
 
-download_v2:
-	( if [ ! -f $(THISDIR)/Xray-core-$(V2ray_VERSION).tar.gz ]; then \
-	curl --create-dirs -L $(V2ray_URL) -o $(THISDIR)/Xray-core-$(V2ray_VERSION).tar.gz ; \
+download_xray:
+	( if [ ! -f $(THISDIR)/Xray-core-$(xray_VERSION).tar.gz ]; then \
+	curl --create-dirs -L $(xray_URL) -o $(THISDIR)/Xray-core-$(xray_VERSION).tar.gz ; \
 	fi )
 
 build_extract:
 	mkdir -p $(THISDIR)/github.com/xtls/
 	mkdir -p $(THISDIR)/bin
 	( if [ ! -d $(THISDIR)/github.com/xtls/xray-core ]; then \
-	tar zxfv $(THISDIR)/Xray-core-$(V2ray_VERSION).tar.gz -C $(THISDIR)/github.com/xtls ; \
-	mv $(THISDIR)/github.com/xtls/Xray-core-$(V2ray_VERSION) $(THISDIR)/github.com/xtls/xray-core ; \
+	tar zxfv $(THISDIR)/Xray-core-$(xray_VERSION).tar.gz -C $(THISDIR)/github.com/xtls ; \
+	mv $(THISDIR)/github.com/xtls/Xray-core-$(xray_VERSION) $(THISDIR)/github.com/xtls/xray-core ; \
 	fi )
 
-build_v2ray:
-	( cd $(THISDIR)/$(v2ray_dir); \
+build_xray:
+	( cd $(THISDIR)/$(xray_dir); \
 	GOOS=linux GOARCH=mipsle go build -ldflags "-w -s" -o $(THISDIR)/bin/v2ray; \
 	upx --lzma --best $(THISDIR)/bin/v2ray; \
 	)
