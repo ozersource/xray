@@ -22,7 +22,6 @@ build_extract:
 
 build_xray:
 	( cd $(THISDIR)/$(xray_dir); \
-	go mod init ; \
 	GOOS=linux GOARCH=mipsle go build -o $(THISDIR)/bin/v2ray -trimpath -ldflags "-s -w -buildid=" ./main; \
 	upx --lzma --best $(THISDIR)/bin/v2ray; \
 	)
