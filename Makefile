@@ -20,7 +20,7 @@ build_extract:
 
 build:
 	( cd $(THISDIR)/github.com/xtls/xray-core ; \
-	GOOS=linux GOARCH=mipsle go build -ldflags "-w -s buildid=" ./main -o $(THISDIR)/bin/v2ray; \
+	GOOS=linux go build -ldflags "-w -s buildid=" ./main -o $(THISDIR)/bin/v2ray; \
 	upx --lzma --best $(THISDIR)/bin/v2ray; \
 
 download_PKG:
